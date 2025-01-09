@@ -159,7 +159,7 @@ def update_incidents_model_with_checkpoint(incidents_model, args):
     print(config_name)
     
     best_str = "_best" if args.mode == "test" else ""
-
+    #IN CASE YOU HAVE A CHECKPOINT (JU HERE)
     trunk_resume = os.path.join(
         args.checkpoint_path, "trunk{}.pth.tar".format(best_str))
     place_resume = os.path.join(
@@ -167,9 +167,10 @@ def update_incidents_model_with_checkpoint(incidents_model, args):
     incident_resume = os.path.join(
         args.checkpoint_path, "incident{}.pth.tar".format(best_str))
 
-    # trunk_resume = "/data/vision/torralba/scratch/ethanweber/DamageAssessment/external/IncidentsDataset/pretrained_weights/eccv_final_model_trunk.pth.tar"
-    # place_resume = "/data/vision/torralba/scratch/ethanweber/DamageAssessment/external/IncidentsDataset/pretrained_weights/eccv_final_model_place.pth.tar"
-    # incident_resume = "/data/vision/torralba/scratch/ethanweber/DamageAssessment/external/IncidentsDataset/pretrained_weights/eccv_final_model_incident.pth.tar"
+    #FOR THE ORIGINALs PRE TRAINED ((JU HERE))
+    trunk_resume = "pretrained_weights/eccv_final_model_trunk.pth.tar"
+    place_resume = "pretrained_weights/eccv_final_model_place.pth.tar"
+    incident_resume = "pretrained_weights/eccv_final_model_incident.pth.tar"
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     for (path, net) in [(trunk_resume, trunk_model), (place_resume, place_layer), (incident_resume, incident_layer)]:
